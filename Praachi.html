@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Dalli 🐞❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#090014;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background:
+      radial-gradient(circle at 20% 20%,#42005f,transparent 35%),
+      radial-gradient(circle at 80% 70%,#650014,transparent 35%),
+      linear-gradient(135deg,#08000f,#17000d,#030008);
+}
+
+/* Stars */
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+    background-image:
+      radial-gradient(white 1px,transparent 1px),
+      radial-gradient(#ffb3d1 1px,transparent 1px);
+    background-size:70px 70px,110px 110px;
+    animation:stars 15s linear infinite;
+}
+
+@keyframes stars{
+    to{background-position:500px 300px,-300px 400px}
+}
+
+/* ================= LIGHTNING ================= */
+
+.lightning{
+    position:fixed;
+    inset:0;
+    background:white;
+    opacity:0;
+    z-index:20;
+    pointer-events:none;
+}
+
+.lightning.flash{
+    animation:flash .45s;
+}
+
+@keyframes flash{
+    0%{opacity:0}
+    15%{opacity:.8}
+    20%{opacity:0}
+    35%{opacity:.5}
+    40%{opacity:0}
+}
+
+/* ================= GENERAL ================= */
+
+section{
+    min-height:100vh;
+    padding:70px 18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
+    width:min(700px,100%);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(12px);
+    border-radius:30px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(255,0,90,.2);
+}
+
+h1{
+    font-size:clamp(42px,12vw,85px);
+    color:#ff416c;
+    text-shadow:0 0 15px #ff416c,0 0 40px #ff174f;
+}
+
+h2{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.7;
+}
+
+button{
+    border:none;
+    border-radius:30px;
+    padding:14px 23px;
+    margin:8px;
+    background:linear-gradient(135deg,#ff174f,#ff5c8a);
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    box-shadow:0 0 20px rgba(255,40,100,.4);
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:active{
+    transform:scale(.9);
+}
+
+/* ================= INTRO ================= */
+
+#intro{
+    text-align:center;
+}
+
+.bug{
+    font-size:90px;
+    animation:bugBounce 1.5s infinite alternate;
+    filter:drop-shadow(0 0 15px red);
+}
+
+@keyframes bugBounce{
+    from{transform:translateY(0) rotate(-8deg)}
+    to{transform:translateY(-20px) rotate(8deg)}
+}
+
+.subtitle{
+    margin:15px 0 25px;
+    color:#ffc1d5;
+    font-size:19px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ================= GIFT ================= */
+
+.gift-area{
+    margin:30px auto;
+    width:200px;
+    height:180px;
+    position:relative;
+    cursor:pointer;
+}
+
+.gift-box{
+    position:absolute;
+    width:160px;
+    height:100px;
+    left:20px;
+    bottom:0;
+    background:#e91e63;
+    border-radius:8px;
+    box-shadow:0 0 30px #e91e63;
+}
+
+.gift-box:before{
+    content:"";
+    position:absolute;
+    width:28px;
+    height:100%;
+    left:66px;
+    background:#ffd54f;
+}
+
+.gift-lid{
+    position:absolute;
+    width:180px;
+    height:35px;
+    left:10px;
+    bottom:88px;
+    background:#ff4081;
+    border-radius:8px;
+    transition:1s;
+    z-index:3;
+}
+
+.gift-lid:before{
+    content:"";
+    position:absolute;
+    width:28px;
+    height:35px;
+    left:76px;
+    background:#ffd54f;
+}
+
+.bow{
+    position:absolute;
+    bottom:113px;
+    left:78px;
+    font-size:40px;
+    z-index:4;
+    transition:1s;
+}
+
+.gift-area.open .gift-lid{
+    transform:translateY(-100px) rotate(-12deg);
+}
+
+.gift-area.open .bow{
+    transform:translateY(-100px) scale(1.2) rotate(20deg);
+}
+
+/* ================= CAKE ================= */
+
+.cake{
+    position:relative;
+    width:220px;
+    height:120px;
+    margin:70px auto 30px;
+}
+
+.layer{
+    position:absolute;
+    bottom:0;
+    left:10px;
+    width:200px;
+    height:80px;
+    border-radius:15px;
+    background:linear-gradient(#ff7aa2,#d91e54);
+    box-shadow:0 10px 25px #000;
+}
+
+.cream{
+    position:absolute;
+    top:0;
+    left:10px;
+    width:200px;
+    height:25px;
+    border-radius:50%;
+    background:#fff;
+}
+
+.candle{
+    position:absolute;
+    width:18px;
+    height:65px;
+    background:#fff;
+    left:101px;
+    top:-60px;
+    border-radius:5px;
+}
+
+.flame{
+    position:absolute;
+    width:22px;
+    height:30px;
+    left:-2px;
+    top:-27px;
+    background:orange;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    box-shadow:0 0 15px orange;
+    animation:flicker .25s infinite alternate;
+}
+
+@keyframes flicker{
+    to{transform:rotate(-40deg) scale(1.15)}
+}
+
+.smoke{
+    position:absolute;
+    left:-5px;
+    top:-30px;
+    opacity:0;
+    font-size:30px;
+}
+
+.cake.blown .flame{
+    display:none;
+}
+
+.cake.blown .smoke{
+    animation:smoke 2s forwards;
+}
+
+@keyframes smoke{
+    0%{opacity:0;transform:translateY(10px)}
+    30%{opacity:1}
+    100%{opacity:0;transform:translateY(-70px)}
+}
+
+/* ================= SECRET CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.secret{
+    height:160px;
+    perspective:900px;
+    cursor:pointer;
+}
+
+.inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:.7s;
+}
+
+.secret.open .inner{
+    transform:rotateY(180deg);
+}
+
+.front,.back{
+    position:absolute;
+    inset:0;
+    backface-visibility:hidden;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+}
+
+.front{
+    background:linear-gradient(135deg,#c41445,#ff416c);
+    font-size:22px;
+}
+
+.back{
+    background:#fff0f5;
+    color:#68152d;
+    transform:rotateY(180deg);
+    font-weight:bold;
+}
+
+/* ================= HEART GAME ================= */
+
+.game{
+    position:relative;
+    height:260px;
+    overflow:hidden;
+    background:rgba(255,255,255,.06);
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.heart{
+    position:absolute;
+    font-size:38px;
+    cursor:pointer;
+    animation:fall 3s linear;
+}
+
+@keyframes fall{
+    from{top:-50px}
+    to{top:270px}
+}
+
+/* ================= FIREWORK ================= */
+
+#fireworks{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:15;
+}
+
+.spark{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 10px white;
+    animation:explode 1s forwards;
+}
+
+@keyframes explode{
+    to{
+        transform:translate(var(--x),var(--y));
+        opacity:0;
+    }
+}
+
+/* ================= FLOATING HEART ================= */
+
+.floatHeart{
+    position:fixed;
+    bottom:-30px;
+    font-size:25px;
+    z-index:10;
+    pointer-events:none;
+    animation:rise 4s linear forwards;
+}
+
+@keyframes rise{
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* ================= FINAL ================= */
+
+.final{
+    background:
+      radial-gradient(circle at top,#a9003d,#28000e 60%);
+}
+
+.finalText{
+    font-size:19px;
+    text-align:left;
+    line-height:2;
+}
+
+.signature{
+    margin-top:25px;
+    font-size:25px;
+    color:#ffb3ca;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:520px){
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .box{
+        padding:25px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="stars"></div>
+<div class="lightning" id="lightning"></div>
+<div id="fireworks"></div>
+
+<!-- ================= INTRO ================= -->
+
+<section id="intro">
+
+<div class="box">
+
+<div class="bug">🐞</div>
+
+<h1>DALLI</h1>
+
+<h2>It's Your Day ❤️</h2>
+
+<p class="subtitle">
+Ashwin 15 🎂<br>
+A little birthday surprise made specially for you.
+</p>
+
+<button onclick="openGift()">
+🎁 OPEN YOUR GIFT
+</button>
+
+<div id="introMessage" class="hidden">
+<br>
+<h2>🎊 SURPRISEEEE 🎊</h2>
+<p>
+Welcome to your extremely unnecessary but highly important
+birthday website 😂❤️
+</p>
+
+<button onclick="goToCake()">
+🎂 Continue
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CAKE ================= -->
+
+<section id="cakeSection">
+
+<div class="box">
+
+<h2>🎂 Make A Wish</h2>
+
+<p>
+Close your eyes... make a wish...<br>
+Then tap the button 😌
+</p>
+
+<div class="cake" id="cake">
+
+<div class="layer">
+<div class="cream"></div>
+</div>
+
+<div class="candle">
+<div class="flame"></div>
+<div class="smoke">💨</div>
+</div>
+
+</div>
+
+<button onclick="blowCandle()">
+🕯️ BLOW THE CANDLE
+</button>
+
+<p id="cakeMessage"></p>
+
+</div>
+
+</section>
+
+
+<!-- ================= SECRET CARDS ================= -->
+
+<section>
+
+<div class="box">
+
+<h2>💌 SECRET CARDS</h2>
+
+<p>
+Tap them one by one 👀<br>
+Some of these should probably remain classified.
+</p>
+
+<div class="cards">
+
+<div class="secret" onclick="flip(this)">
+<div class="inner">
+<div class="front">🔒 Secret #1</div>
+<div class="back">
+Dalli naam nai already cute cha...<br>
+tara timi chai jhan dangerous level ko cute chau 👀❤️
+</div>
+</div>
+</div>
+
+<div class="secret" onclick="flip(this)">
+<div class="inner">
+<div class="front">🔒 Secret #2</div>
+<div class="back">
+Timi sanga kura garda time kina yeti chito jancha? 🤨<br>
+Definitely suspicious.
+</div>
+</div>
+</div>
+
+<div class="secret" onclick="flip(this)">
+<div class="inner">
+<div class="front">🔒 Secret #3</div>
+<div class="back">
+Friendship ko VIP list banaye bhane...<br>
+timro naam lifetime membership ho 😌❤️
+</div>
+</div>
+</div>
+
+<div class="secret" onclick="flip(this)">
+<div class="inner">
+<div class="front">🔒 Secret #4</div>
+<div class="back">
+Warning ⚠️<br>
+Too much talking with you may cause attachment 😂❤️
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= GAME ================= -->
+
+<section>
+
+<div class="box">
+
+<h2>🎮 CATCH THE HEARTS</h2>
+
+<p>
+Catch 5 hearts before they escape ❤️
+</p>
+
+<div class="game" id="game"></div>
+
+<h3 id="score">Score: 0 / 5</h3>
+
+<button onclick="startGame()">
+❤️ START GAME
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= FIREWORK SECTION ================= -->
+
+<section>
+
+<div class="box">
+
+<h2>🎆 FIREWORK TIME 🎆</h2>
+
+<p>
+Because a normal birthday website wasn't dramatic enough 😂
+</p>
+
+<button onclick="fireworks()">
+🎆 LAUNCH FIREWORKS
+</button>
+
+<button onclick="lightning()">
+⚡ SUMMON LIGHTNING
+</button>
+
+<p style="margin-top:20px">
+🐞 + ⚡ + 🎆 = DALLI'S BIRTHDAY
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= HIDDEN MESSAGE ================= -->
+
+<section>
+
+<div class="box">
+
+<h2>🔐 FINAL SECRET</h2>
+
+<p>
+You've reached the end...<br>
+but there is still one thing hidden here.
+</p>
+
+<button onclick="revealFinal()">
+DON'T TAP THIS 👀
+</button>
+
+<div id="finalReveal" class="hidden">
+
+<br>
+
+<p>
+Okay fine 😭
+<br><br>
+Jokes aside... some people just randomly become
+important without even trying.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FINAL MESSAGE ================= -->
+
+<section class="final">
+
+<div class="box">
+
+<h2>❤️ For Praachi</h2>
+
+<div class="finalText">
+
+<p>
+PRAACHI Aile samma ko line tw ChatGPT wlaa thiye 😆
+Tara aba last ma tw maile aafai vanxu ki...
+</p>
+
+<br>
+
+<p>
+Aile samma kati kti sathi haru Aaye Gaye,
+but you are the most important and valuable female friend
+I ever got ❤️
+</p>
+
+<br>
+
+<p>
+Hamro friendship yestai pagal, ramailo,
+annoying ra special rahos 😂❤️
+</p>
+
+<br>
+
+<p>
+hope our friendship will end 🙌
+</p>
+
+</div>
+
+<div class="signature">
+Happy Birthday, Dalli 🐞🎂❤️
+</div>
+
+<p style="margin-top:15px">
+— Your annoying bestfriend 😂
+</p>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* ================= GIFT ================= */
+
+function openGift(){
+
+    const gift=document.querySelector(".gift-area");
+
+    /*
+      The gift isn't on the screen initially,
+      so create the opening animation directly.
+    */
+
+    const btn=event.currentTarget;
+
+    btn.innerHTML="🎁 OPENING...";
+
+    setTimeout(()=>{
+
+        btn.innerHTML="🎊 SURPRISE!";
+
+        document.getElementById("introMessage")
+        .classList.remove("hidden");
+
+        fireworks();
+
+        for(let i=0;i<15;i++){
+            createHeart();
+        }
+
+        setTimeout(()=>{
+            document.getElementById("cakeSection")
+            .scrollIntoView({behavior:"smooth"});
+        },1200);
+
+    },700);
+}
+
+
+/* ================= CANDLE ================= */
+
+function blowCandle(){
+
+    const cake=document.getElementById("cake");
+    const message=document.getElementById("cakeMessage");
+
+    if(cake.classList.contains("blown")){
+        message.innerHTML="The candle is already blown 😂❤️";
+        return;
+    }
+
+    cake.classList.add("blown");
+
+    message.innerHTML=
+    "💨 Candle successfully blown! 🎉<br>" +
+    "Wish accepted by the birthday department 😌❤️";
+
+    fireworks();
+
+    for(let i=0;i<25;i++){
+        setTimeout(createHeart,i*40);
+    }
+}
+
+
+/* ================= SCROLL ================= */
+
+function goToCake(){
+
+    document.getElementById("cakeSection")
+    .scrollIntoView({behavior:"smooth"});
+
+}
+
+
+/* ================= CARDS ================= */
+
+function flip(card){
+
+    card.classList.toggle("open");
+
+    createHeart();
+
+}
+
+
+/* ================= HEART GAME ================= */
+
+let score=0;
+let gameActive=false;
+
+function startGame(){
+
+    score=0;
+    gameActive=true;
+
+    document.getElementById("score").innerHTML=
+    "Score: 0 / 5";
+
+    const game=document.getElementById("game");
+
+    game.innerHTML="";
+
+    spawnHeartGame();
+
+}
+
+function spawnHeartGame(){
+
+    if(!gameActive) return;
+
+    if(score>=5){
+
+        gameActive=false;
+
+        document.getElementById("score").innerHTML=
+        "🎉 YOU WON! Dalli gets unlimited friendship points ❤️";
+
+        fireworks();
+
+        return;
+    }
+
+    const game=document.getElementById("game");
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+    heart.innerHTML="❤️";
+
+    heart.style.left=
+    Math.random()*85+"%";
+
+    heart.onclick=function(){
+
+        if(!gameActive) return;
+
+        score++;
+
+        document.getElementById("score").innerHTML=
+        "Score: "+score+" / 5";
+
+        heart.remove();
+
+        spawnHeartGame();
+
+    };
+
+    game.appendChild(heart);
+
+    setTimeout(()=>{
+
+        if(heart.parentNode){
+
+            heart.remove();
+
+            spawnHeartGame();
+
+        }
+
+    },2800);
+
+}
+
+
+/* ================= FIREWORKS ================= */
+
+function fireworks(){
+
+    const area=document.getElementById("fireworks");
+
+    const centerX=
+    Math.random()*window.innerWidth;
+
+    const centerY=
+    100+Math.random()*window.innerHeight*.45;
+
+    for(let i=0;i<45;i++){
+
+        const spark=document.createElement("div");
+
+        spark.className="spark";
+
+        spark.style.left=centerX+"px";
+        spark.style.top=centerY+"px";
+
+        const angle=
+        (Math.PI*2*i)/45;
+
+        const distance=
+        60+Math.random()*150;
+
+        spark.style.setProperty(
+            "--x",
+            Math.cos(angle)*distance+"px"
+        );
+
+        spark.style.setProperty(
+            "--y",
+            Math.sin(angle)*distance+"px"
+        );
+
+        area.appendChild(spark);
+
+        setTimeout(()=>{
+            spark.remove();
+        },1100);
+
+    }
+
+}
+
+
+/* ================= LIGHTNING ================= */
+
+function lightning(){
+
+    const flash=
+    document.getElementById("lightning");
+
+    flash.classList.remove("flash");
+
+    /*
+      Force browser to restart the animation.
+    */
+
+    void flash.offsetWidth;
+
+    flash.classList.add("flash");
+
+    setTimeout(()=>{
+        fireworks();
+    },300);
+
+}
+
+
+/* ================= HEARTS ================= */
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="floatHeart";
+
+    const icons=[
+        "❤️","💖","💕","💗","💓","🐞","✨"
+    ];
+
+    heart.innerHTML=
+    icons[Math.floor(Math.random()*icons.length)];
+
+    heart.style.left=
+    Math.random()*95+"vw";
+
+    heart.style.animationDuration=
+    (3+Math.random()*3)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+
+}
+
+
+/* ================= FINAL SECRET ================= */
+
+function revealFinal(){
+
+    const box=
+    document.getElementById("finalReveal");
+
+    box.classList.remove("hidden");
+
+    fireworks();
+
+    for(let i=0;i<30;i++){
+
+        setTimeout(createHeart,i*70);
+
+    }
+
+}
+
+
+/* ================= RANDOM EFFECTS ================= */
+
+setInterval(()=>{
+
+    if(Math.random()<.35){
+        createHeart();
+    }
+
+},2500);
+
+
+/* ================= AUTO FIREWORK ================= */
+
+setTimeout(()=>{
+    fireworks();
+},1500);
+
+</script>
+
+</body>
+  </html>
